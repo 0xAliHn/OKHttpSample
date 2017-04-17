@@ -6,7 +6,8 @@ OkHttp is an open source project designed to be an efficient HTTP and HTTP/2 cli
 We can create a Call object and dispatch the network request synchronously:
 
 ```java 
-Response response = client.newCall(request).execute();```
+Response response = client.newCall(request).execute();
+```
 
 Because Android disallows network calls on the main thread, you can only make synchronous calls if you do so on a separate thread or a background service. 
 
@@ -28,7 +29,8 @@ client.newCall(request).enqueue(new Callback() {
             throw new IOException("Unexpected code " + response);
         }
     }
-}```
+}
+```
 
 
 If you need to update any views, you will need to use runOnUiThread() or post the result back on the main thread. See this guide for more context.
@@ -55,7 +57,8 @@ client.newCall(request).enqueue(new Callback() {
             }
        }
     }
-});```
+});
+```
 
 
 ### Make a Post request
@@ -74,4 +77,8 @@ RequestBody body = RequestBody.create(JSON, json);
 Request request = new Request.Builder()
   .url(url)
   .post(body)
-  .build();```
+  .build();
+  ```
+  
+### Using with Websockets
+OkHttp v3.5 now includes support for bidirectional web sockets
